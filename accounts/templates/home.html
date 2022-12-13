@@ -4,9 +4,53 @@
 <html>
 <head>
     <title>inOut</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/home_css.css' %}">
 </head>
 <body>
-    <h1>Welcome to la concha de la pija puta</h1>
+    <h1>WELCOME TO inOut</h1>
+
+    <h3>control your daily budget easily</h3>
+
+    <div>
+        <table class="in">
+            <tr>
+                <th class="in">IN</th>
+                <th class="descriptionIn">DESCRIPTION</th>
+                <th class="categoryIn">CATEGORY</th>
+                <th class="dateIn">DATE</th>
+            </tr>
+            
+            {% for i in in_results %}
+                <tr>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.date_created}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <table class="out">
+            <tr>
+                <th class="out">IN</th>
+                <th class="descriptionOut">DESCRIPTION</th>
+                <th class="categoryOut">CATEGORY</th>
+                <th class="dateOut">DATE</th>
+            </tr>
+            
+            {% for i in out_results %}
+                <tr>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.date_created}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <footer>inOut - 2022</footer>
 </body>
 </html>
