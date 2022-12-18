@@ -1,16 +1,9 @@
+{% extends 'main.html' %}
 {% load static %}
+{% block content %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>inOut</title>
+
     <link rel="stylesheet" type="text/css" href="{% static '/css/home_css.css' %}">
-</head>
-<body>
-    <h1>WELCOME TO inOut</h1>
-
-    <h3>control your daily budget easily</h3>
-
     <div>
         <table class="in">
             <tr>
@@ -18,6 +11,8 @@
                 <th class="descriptionIn">DESCRIPTION</th>
                 <th class="categoryIn">CATEGORY</th>
                 <th class="dateIn">DATE</th>
+                <th class="dateIn"></th>
+                <th class="dateIn"></th>
             </tr>
             
             {% for i in in_results %}
@@ -26,9 +21,13 @@
                     <td>{{i.description}}</td>
                     <td>{{i.category}}</td>
                     <td>{{i.date_created}}</td>
+                    <td class="update"><a href="{% url 'update_in' i.id %}">UPDATE</a></td>
+                    <td class="remove"><a href="{% url 'delete_in' i.id %}">DELETE</a></td>
                 </tr>
             {% endfor %}
         </table>
+        <a class="in" href="{% url 'create_in' %}">IN</a>
+
     </div>
 
     <div>
@@ -38,6 +37,9 @@
                 <th class="descriptionOut">DESCRIPTION</th>
                 <th class="categoryOut">CATEGORY</th>
                 <th class="dateOut">DATE</th>
+                <th class="dateOut"></th>
+                <th class="dateOut"></th>
+
             </tr>
             
             {% for i in out_results %}
@@ -46,11 +48,23 @@
                     <td>{{i.description}}</td>
                     <td>{{i.category}}</td>
                     <td>{{i.date_created}}</td>
+                    <td class="update"><a href="{% url 'update_out' i.id %}">UPDATE</a></td>
+                    <td class="remove"><a href="{% url 'delete_out' i.id %}">DELETE</a></td>
                 </tr>
             {% endfor %}
         </table>
+        <a class="out" href="{% url 'create_out' %}">OUT</a>
     </div>
+    
+    <div>
+        <table class="total">
+            <tr>
+                <th class="total">TOTAL</th>
+            </tr>
+                <tr>
+                    <td>{{total}}</td>
+                </tr>
+            </table>
+        </div>
 
-    <footer>inOut - 2022</footer>
-</body>
-</html>
+{% endblock %}

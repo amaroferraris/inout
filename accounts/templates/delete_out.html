@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<p>Are you sure you want to delete <strong>{{item.amount}} || {{item}} || {{item.category}}</strong>?</p>
+
+
+<form action="{% url 'delete_out' item.id %}" method="POST">
+
+    {% csrf_token %}
+    <a href="{% url 'home' %}">Cancel</a>
+    <input type="Submit" name="Confirm">
+</form>
+
+
+{% endblock %}
