@@ -1,3 +1,7 @@
 --login
 ---home IN | OUT | LAST n IN | LAST n OUT
 ----display all
+
+
+NEXT STEP: display the user page for each user,
+maybe some decorators will work

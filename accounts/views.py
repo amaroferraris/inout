@@ -1,9 +1,82 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import *
-from .forms import InForm, OutForm
-# Create your views here.
+from django.contrib.auth.forms import UserCreationForm
 
+from django.contrib.auth import authenticate, login, logout
+
+from django.contrib import messages
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+
+# Create your views here.
+from .models import *
+from .forms import InForm, OutForm, CreateUserForm
+from .decorators import *
+
+
+# REGISTER
+
+@unauthenticated_user
+def registerUser(request):
+
+    form = CreateUserForm()
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+
+            group = Group.objects.get(name="users")
+            user.groups.add(group)
+            User.objects.create(
+                user=user,
+                name=user.username,
+
+            )
+
+            messages.success(request, 'Account was created for ' + username)
+
+            return redirect('login')
+
+
+    context = {'form':form}
+    return render(request, 'register.html', context)
+
+
+# LOGIN
+
+@unauthenticated_user
+def loginUser(request):
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('user')
+        else:
+            messages.info(request, 'Username OR password is incorrect!')
+
+    context = {}
+    return render(request, 'login.html', context)
+
+
+
+# LOGOUT
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
+
+
+# HOME
+@admin_only
+@login_required(login_url='login')
 def home(request):
     in_results = In.objects.all()
     out_results = Out.objects.all()
@@ -25,8 +98,6 @@ def home(request):
 
     totalOut = sum(amountOut)
 
-    print(In.objects.all())
-
     total = totalIn - totalOut
 
 
@@ -39,6 +110,7 @@ def home(request):
 
 # CREATE
 
+@login_required(login_url='login')
 def createIn(request):
 
     form = InForm()
@@ -53,7 +125,7 @@ def createIn(request):
 
     return render(request, 'in_form.html', context)
 
-
+@login_required(login_url='login')
 def createOut(request):
 
     form = OutForm()
@@ -72,6 +144,7 @@ def createOut(request):
 
 # UPDATE
 
+@login_required(login_url='login')
 def updateIn(request, pk):
 
     get_in = In.objects.get(id=pk)
@@ -87,6 +160,7 @@ def updateIn(request, pk):
     return render(request, 'in_form.html', context)
 
 
+@login_required(login_url='login')
 def updateOut(request, pk):
 
     get_out = Out.objects.get(id=pk)
@@ -106,6 +180,7 @@ def updateOut(request, pk):
 
 # DELETE
 
+@login_required(login_url='login')
 def deleteIn(request, pk):
 
     get_in = In.objects.get(id=pk)
@@ -116,10 +191,11 @@ def deleteIn(request, pk):
     context = {'item':get_in}
     return render(request, 'delete_in.html', context)
 
-
+@login_required(login_url='login')
 def deleteOut(request, pk):
 
     get_out = Out.objects.get(id=pk)
+    print(get_out)
     if request.method == 'POST':
         get_out.delete()
         return redirect('/')
@@ -127,4 +203,22 @@ def deleteOut(request, pk):
     context = {'item':get_out}
     return render(request, 'delete_out.html', context)
 
-# https://youtu.be/EX6Tt-ZW0so?list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&t=731
+
+
+
+# USER
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['users', 'admin'])
+def userPage(request):
+
+    in_results = request.user.in_set.all()
+    out_results = request.user.out_set.all()
+
+    print('IN :', in_results)
+    print('OUT :', out_results)
+
+    context = {'in_results':in_results, 'out_results':out_results}
+    return render(request, 'user.html', context)
+
+# https://youtu.be/gXGQmt_U9Ao?list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&t=209

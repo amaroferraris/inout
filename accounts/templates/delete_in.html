@@ -5,7 +5,7 @@
 
 <p>Are you sure you want to delete <strong>{{item.amount}} || {{item}} || {{item.category}}</strong>?</p>
 
-<form action="{% url 'delete_out' item.id %}" method="POST">
+<form action="{% url 'delete_in' item.id %}" method="POST">
 
     {% csrf_token %}
     <a href="{% url 'home' %}">Cancel</a>
