@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 
 # Create your views here.
 from .models import *
@@ -29,11 +29,7 @@ def registerUser(request):
 
             group = Group.objects.get(name="users")
             user.groups.add(group)
-            User.objects.create(
-                user=user,
-                name=user.username,
-
-            )
+            User.objects.create()
 
             messages.success(request, 'Account was created for ' + username)
 
@@ -57,6 +53,16 @@ def loginUser(request):
 
         if user is not None:
             login(request, user)
+
+            # group = User.objects.all()
+            # for g in group:
+            #     print(g.groups.all())
+
+            # if request.user.groups == 'admin':
+            #     print('hello admin')
+            #     return redirect('home')
+            # else:
+            #     print('hello user')
             return redirect('user')
         else:
             messages.info(request, 'Username OR password is incorrect!')
@@ -75,7 +81,7 @@ def logoutUser(request):
 
 
 # HOME
-@admin_only
+# @admin_only
 @login_required(login_url='login')
 def home(request):
     in_results = In.objects.all()
@@ -113,15 +119,21 @@ def home(request):
 @login_required(login_url='login')
 def createIn(request):
 
+    user_id = request.user.id
+
     form = InForm()
+    context = {'form':form, 'user_id':user_id}
+
+    saracatunga = form.fields['user_in']
+    saracatunga.widget = saracatunga.hidden_widget()
+
     if request.method == 'POST':
         form = InForm(request.POST)
         if form.is_valid():
             form.save()
+            print('Ok!!')
             return redirect('/')
 
-
-    context = {'form':form}
 
     return render(request, 'in_form.html', context)
 
@@ -209,16 +221,22 @@ def deleteOut(request, pk):
 # USER
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['users', 'admin'])
 def userPage(request):
 
     in_results = request.user.in_set.all()
     out_results = request.user.out_set.all()
 
-    print('IN :', in_results)
-    print('OUT :', out_results)
-
     context = {'in_results':in_results, 'out_results':out_results}
     return render(request, 'user.html', context)
 
-# https://youtu.be/gXGQmt_U9Ao?list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&t=209
+
+# DELETE USER
+def deleteUser(request):
+
+    carla = User.objects.get(username='Carla')
+
+    carla.delete()
+
+    print('Todo very bien')
+
+    return request

@@ -4,6 +4,5 @@ from django.contrib import admin
 
 from .models import *
 
-# admin.site.register(InOutUser)
 admin.site.register(In)
 admin.site.register(Out)

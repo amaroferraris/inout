@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-    width: 25%;
+    max-width: 25%;
     color: rgb(75, 75, 75);
     background-color: rgb(150, 230, 255);
     padding: 20px;
@@ -28,7 +28,7 @@ h3 {
 }
 
 
-div {margin: 5px; display: inline-flex;}
+div {margin: 5px; display: inline-flex; max-width: 50%;}
 
 
 table {width: 100%; border: 1px solid #000000;
@@ -91,7 +91,7 @@ footer {margin: 3em; text-align: center;}
 
 /* a */
 
-a {text-decoration: none; color: rgba(50, 50, 50, 0.8)}
+a {text-decoration: none; color: rgba(50, 50, 50, 0.8);}
 
 a.in {border: 1px solid black; padding: 20%; background-color: rgba(0, 130, 0, 0.8); padding-left: 10px; padding-right: 10px; text-decoration: none;}
 a.in:hover {color: white; background-color: rgba(0, 190, 0, 0.8);}
@@ -110,8 +110,10 @@ form {font-family: Verdana, Geneva, Tahoma, sans-serif;}
     color:rgba(0, 130, 0, 0.8);
     margin: 20px;
     font-family: Verdana, Tahoma, sans-serif;
+    float: left;
 }
 
 #a-span {
     font-family: Verdana, Tahoma, sans-serif;
+    float: left;
 }

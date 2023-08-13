@@ -17,4 +17,6 @@ urlpatterns = [
     path('delete_out/<str:pk>/', views.deleteOut, name="delete_out"),
     
     path('', views.userPage, name="user"),
+
+    path('delete_user', views.deleteUser, name="deleteUser")
 ]

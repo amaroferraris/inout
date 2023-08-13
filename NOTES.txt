@@ -3,5 +3,8 @@
 ----display all
 
 
-NEXT STEP: display the user page for each user,
-maybe some decorators will work
+NEXT STEPs: 
+- turn HOME into "admin_only"
+- link "create data" to user_id
+
+- fix the DELETE user error
