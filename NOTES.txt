@@ -8,3 +8,8 @@ NEXT STEPs:
 - link "create data" to user_id
 
 - fix the DELETE user error
+
+
+
+Encontrar la manera de hacer form.save() 
+sin commitear, 
