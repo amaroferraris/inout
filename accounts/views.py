@@ -144,7 +144,8 @@ def createOut(request):
     if request.method == 'POST':
         form = OutForm(request.POST)
         if form.is_valid():
-            form.save()
+
+            out_saving = form.save(commit=False)
             return redirect('/')
 
 
