@@ -1,3 +1,10 @@
 --login
 ---home IN | OUT | LAST n IN | LAST n OUT
 ----display all
+
+
+NEXT STEPs: 
+- turn HOME into "admin_only"
+- link "create data" to user_id
+
+- fix the DELETE user error

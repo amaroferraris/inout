@@ -4,9 +4,9 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{form}}
+    {{ form }}
     <input type="submit" name="Submit">
-    <a href="{% url 'home' %}">Cancel</a>
+    <a href="{% url 'user' %}">Cancel</a>
 </form>
 
 {% endblock %}

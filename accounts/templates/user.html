@@ -2,14 +2,13 @@
 {% load static %}
 {% block content %}
 
+<link rel="stylesheet" type="text/css" href="{% static '/css/home_css.css' %}">
 
-    <link rel="stylesheet" type="text/css" href="{% static '/css/home_css.css' %}">
     <span id="hello-msg">Hello, {{request.user}}</span>
-    <span id="hello-msg"><a id="a-span" href="{% url 'logout' %}">LOGOUT</a></span>
+    <span id="hello-msg"><a href="{% url 'logout' %}">LOGOUT</a></span>
     <div>
         <table class="in">
             <tr>
-                <th class="dateIn">ID</th>
                 <th class="in">IN</th>
                 <th class="descriptionIn">DESCRIPTION</th>
                 <th class="categoryIn">CATEGORY</th>
@@ -20,7 +19,6 @@
             
             {% for i in in_results %}
                 <tr>
-                    <td>{{i.user_in_id}}</td>
                     <td>{{i.amount}}</td>
                     <td>{{i.description}}</td>
                     <td>{{i.category}}</td>
@@ -37,7 +35,6 @@
     <div>
         <table class="out">
             <tr>
-                <th class="dateOut">ID</th>
                 <th class="out">IN</th>
                 <th class="descriptionOut">DESCRIPTION</th>
                 <th class="categoryOut">CATEGORY</th>
@@ -48,8 +45,7 @@
             </tr>
             
             {% for i in out_results %}
-            <tr>
-                    <td>{{i.user_out_id}}</td>
+                <tr>
                     <td>{{i.amount}}</td>
                     <td>{{i.description}}</td>
                     <td>{{i.category}}</td>
@@ -62,7 +58,7 @@
         <a class="out" href="{% url 'create_out' %}">OUT</a>
     </div>
     
-    <!-- <div>
+    <div>
         <table class="total">
             <tr>
                 <th class="total">TOTAL</th>
@@ -71,6 +67,6 @@
                     <td>{{total}}</td>
                 </tr>
             </table>
-        </div> -->
+        </div>
 
 {% endblock %}
