@@ -3,13 +3,7 @@
 ----display all
 
 
-NEXT STEPs: 
+NEXT: 
 - turn HOME into "admin_only"
-- link "create data" to user_id
-
 - fix the DELETE user error
-
-
-
-Encontrar la manera de hacer form.save() 
-sin commitear, 
+- reverse the "for" in user.html, so the last item is on the top

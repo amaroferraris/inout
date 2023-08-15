@@ -132,22 +132,6 @@ def createIn(request):
 
     return render(request, 'in_form.html', {'form':form})
 
-    # user_id = request.user.id
-
-    # form = InForm()
-    # context = {'form':form, 'user_id':user_id}
-
-    # saracatunga = form.fields['user_in']
-    # saracatunga.widget = saracatunga.hidden_widget()
-
-    # if request.method == 'POST':
-    #     form = InForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         print('Ok!!')
-    #         return redirect('/')
-
-    # return render(request, 'in_form.html', context)
 
 @login_required(login_url='login')
 def createOut(request):
@@ -164,21 +148,6 @@ def createOut(request):
         form = OutForm()
 
     return render(request, 'out_form.html', {'form':form})
-
-
-    form = OutForm()
-    if request.method == 'POST':
-        form = OutForm(request.POST)
-        if form.is_valid():
-
-            out_saving = form.save(commit=False)
-            return redirect('/')
-
-
-    context = {'form':form}
-    return render(request, 'out_form.html', context)
-
-
 
 
 # UPDATE
@@ -213,8 +182,6 @@ def updateOut(request, pk):
 
     context = {'form':form}
     return render(request, 'out_form.html', context)
-
-
 
 
 # DELETE
