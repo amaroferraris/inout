@@ -152,6 +152,20 @@ def createIn(request):
 @login_required(login_url='login')
 def createOut(request):
 
+    if request.method == 'POST':
+        form = OutForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user_out = request.user
+            instance.save()
+            return redirect('/')
+        
+    else:
+        form = OutForm()
+
+    return render(request, 'out_form.html', {'form':form})
+
+
     form = OutForm()
     if request.method == 'POST':
         form = OutForm(request.POST)
