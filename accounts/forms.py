@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class InForm(ModelForm):
     class Meta:
         model = In
-        fields = ['amount', 'description', 'category', 'user_in']
+        fields = ['amount', 'description', 'category']
 
 
 class OutForm(ModelForm):

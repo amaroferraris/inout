@@ -119,23 +119,35 @@ def home(request):
 @login_required(login_url='login')
 def createIn(request):
 
-    user_id = request.user.id
-
-    form = InForm()
-    context = {'form':form, 'user_id':user_id}
-
-    saracatunga = form.fields['user_in']
-    saracatunga.widget = saracatunga.hidden_widget()
-
     if request.method == 'POST':
         form = InForm(request.POST)
         if form.is_valid():
-            form.save()
-            print('Ok!!')
+            instance = form.save(commit=False)
+            instance.user_in = request.user
+            instance.save()
             return redirect('/')
+        
+    else:
+        form = InForm()
 
+    return render(request, 'in_form.html', {'form':form})
 
-    return render(request, 'in_form.html', context)
+    # user_id = request.user.id
+
+    # form = InForm()
+    # context = {'form':form, 'user_id':user_id}
+
+    # saracatunga = form.fields['user_in']
+    # saracatunga.widget = saracatunga.hidden_widget()
+
+    # if request.method == 'POST':
+    #     form = InForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         print('Ok!!')
+    #         return redirect('/')
+
+    # return render(request, 'in_form.html', context)
 
 @login_required(login_url='login')
 def createOut(request):
