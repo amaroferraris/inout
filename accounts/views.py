@@ -41,7 +41,6 @@ def registerUser(request):
 
 
 # LOGIN
-
 @unauthenticated_user
 def loginUser(request):
 
@@ -73,7 +72,6 @@ def loginUser(request):
 
 
 # LOGOUT
-
 def logoutUser(request):
     logout(request)
     return redirect('login')
@@ -96,7 +94,6 @@ def home(request):
     totalIn = sum(amountIn)
 
 
-
     amountOut = []
     for amount in out_results:
         amount_out = amount
@@ -115,7 +112,6 @@ def home(request):
 
 
 # CREATE
-
 @login_required(login_url='login')
 def createIn(request):
 
@@ -151,7 +147,6 @@ def createOut(request):
 
 
 # UPDATE
-
 @login_required(login_url='login')
 def updateIn(request, pk):
 
@@ -185,7 +180,6 @@ def updateOut(request, pk):
 
 
 # DELETE
-
 @login_required(login_url='login')
 def deleteIn(request, pk):
 
@@ -213,24 +207,29 @@ def deleteOut(request, pk):
 
 
 # USER
-
 @login_required(login_url='login')
 def userPage(request):
 
     in_results = request.user.in_set.all()
     out_results = request.user.out_set.all()
 
-    context = {'in_results':in_results, 'out_results':out_results}
+    amountIn = []
+    for amount in in_results:
+        amount_in = amount
+        amountIn.append(amount_in.amount)
+
+    totalIn = sum(amountIn)
+
+
+    amountOut = []
+    for amount in out_results:
+        amount_out = amount
+        amountOut.append(amount_out.amount)
+
+    totalOut = sum(amountOut)
+
+    total = totalIn - totalOut
+
+
+    context = {'in_results':in_results, 'out_results':out_results, 'total':total}
     return render(request, 'user.html', context)
-
-
-# DELETE USER
-def deleteUser(request):
-
-    carla = User.objects.get(username='Carla')
-
-    carla.delete()
-
-    print('Todo very bien')
-
-    return request
