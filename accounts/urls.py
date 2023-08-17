@@ -18,5 +18,5 @@ urlpatterns = [
     
     path('', views.userPage, name="user"),
 
-    path('delete_user', views.deleteUser, name="deleteUser")
+    # path('delete_user', views.deleteUser, name="deleteUser")
 ]

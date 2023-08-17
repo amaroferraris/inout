@@ -4,6 +4,5 @@
 
 
 NEXT: 
-- turn HOME into "admin_only"
 - fix the DELETE user error
-- reverse the "for" in user.html, so the last item is on the top
+- turn HOME into "admin_only"
