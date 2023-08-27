@@ -14,9 +14,18 @@ from .models import *
 from .forms import InForm, OutForm, CreateUserForm
 from .decorators import *
 
+from django.views.decorators.clickjacking import xframe_options_exempt
+
+
+# ADMIN PAGE
+@admin_only
+@login_required(login_url='login')
+def adminPage(request):
+    return render(request, 'admin')
+
+
 
 # REGISTER
-
 @unauthenticated_user
 def registerUser(request):
 
@@ -79,7 +88,7 @@ def logoutUser(request):
 
 
 # HOME
-# @admin_only
+@admin_only
 @login_required(login_url='login')
 def home(request):
     in_results = In.objects.all()
@@ -121,6 +130,7 @@ def createIn(request):
             instance = form.save(commit=False)
             instance.user_in = request.user
             instance.save()
+            print("Creating in...")
             return redirect('/')
         
     else:
@@ -148,6 +158,7 @@ def createOut(request):
 
 # UPDATE
 @login_required(login_url='login')
+@xframe_options_exempt
 def updateIn(request, pk):
 
     get_in = In.objects.get(id=pk)
@@ -158,6 +169,7 @@ def updateIn(request, pk):
         if form.is_valid():
             form.save()
             return redirect('/')
+
 
     context = {'form':form}
     return render(request, 'in_form.html', context)

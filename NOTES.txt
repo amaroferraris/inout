@@ -5,4 +5,3 @@
 
 NEXT: 
 - fix the DELETE user error
-- turn HOME into "admin_only"

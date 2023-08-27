@@ -2,71 +2,94 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="{% static '/css/home_css.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
 
-<span id="hello-msg">Hello, {{request.user}}</span>
-<span id="hello-msg"><a href="{% url 'logout' %}">LOGOUT</a></span>
-<div>
-    <table class="in">
-        <tr>
-            <th class="in">IN</th>
-            <th class="descriptionIn">DESCRIPTION</th>
-            <th class="categoryIn">CATEGORY</th>
-            <th class="dateIn">DATE</th>
-            <th class="dateIn"></th>
-            <th class="dateIn"></th>
-        </tr>
-        
-        {% for i in in_results reversed %}
+<div class="main_container">
+
+    <div class="inout"><h1>inOut</h1></div>
+
+    <div class="div_total">
+        <table class="total">
             <tr>
-                <td>{{i.amount}}</td>
-                <td>{{i.description}}</td>
-                <td>{{i.category}}</td>
-                <td>{{i.date_created}}</td>
-                <td class="update"><a href="{% url 'update_in' i.id %}">EDIT</a></td>
-                <td class="remove"><a href="{% url 'delete_in' i.id %}">DELETE</a></td>
+                <th class="total">TOTAL</th>
             </tr>
-        {% endfor %}
-    </table>
-    <a class="in" href="{% url 'create_in' %}">IN</a>
-
+            <tr>
+                <td class="total">{{total}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="hello">
+        <span id="hello-msg">Hello, {{request.user}}</span>
+    </div>
+    <div class="logout">
+        <span id="hello-msg"><a class="logout" href="{% url 'logout' %}">LOGOUT</a></span>
+    </div>
+    <div class="admin">
+        <span id="hello-msg"><a class="admin" href="{% url 'admin' %}">ADMIN</a></span>
+    </div>
 </div>
 
-<div>
-    <table class="out">
-        <tr>
-            <th class="out">OUT</th>
-            <th class="descriptionOut">DESCRIPTION</th>
-            <th class="categoryOut">CATEGORY</th>
-            <th class="dateOut">DATE</th>
-            <th class="dateOut"></th>
-            <th class="dateOut"></th>
 
-        </tr>
+
+<div class="container in" id="main_div">
         
+    <div class="title">
+        <a class="in" href="{% url 'create_in' %}">IN</a>
+    </div>
+            
+        {% for in_result in in_results reversed %}
+        <tr>
+            <div class="amount">{{in_result.amount}}</div>
+            <div class="description">{{in_result.description}}</div>
+            <div class="category">{{in_result.category}}</div>
+            <div class="date">{{in_result.date_created|date:"d/m/y H:i"}}</div>
+            <div class="button"><a class="edit" href="{% url 'update_in' in_result.id %}">EDIT</a></div>
+            <!-- <div class="button edit" id="{{in_result.id}}">EDIT</div> -->
+            <div class="button"><a class="delete" href="{% url 'delete_in' in_result.id %}">DELETE</a></div>
+        </tr>
+        {% endfor %}
+</div>
+
+
+<div class="container out">
+        
+    <div class="title">
+        <a class="out" href="{% url 'create_out' %}">OUT</a>
+    </div>
+            
         {% for i in out_results reversed %}
-            <tr>
-                <td>{{i.amount}}</td>
-                <td>{{i.description}}</td>
-                <td>{{i.category}}</td>
-                <td>{{i.date_created}}</td>
-                <td class="update"><a href="{% url 'update_out' i.id %}">EDIT</a></td>
-                <td class="remove"><a href="{% url 'delete_out' i.id %}">DELETE</a></td>
-            </tr>
+        <tr>
+            <div class="amount">{{i.amount}}</div>
+            <div class="description">{{i.description}}</div>
+            <div class="category">{{i.category}}</div>
+            <div class="date">{{i.date_created|date:"d-m-y H:i"}}</div>
+            <div class="button"><a class="edit" href="{% url 'update_out' i.id %}">EDIT</a></div>
+            <div class="button"><a class="delete" href="{% url 'delete_out' i.id %}">DELETE</a></div>
+        </tr>
         {% endfor %}
-    </table>
-    <a class="out" href="{% url 'create_out' %}">OUT</a>
 </div>
 
-<div>
-    <table class="total">
-        <tr>
-            <th class="total">TOTAL</th>
-        </tr>
-        <tr>
-            <td>{{total}}</td>
-        </tr>
-    </table>
-</div>
+<!-- <script>
+
+    // This doesn't work
+
+    const test = document.querySelector("div[id='${in_result.id}']");
+
+    const myDiv = document.querySelector("div[id='main_div']");
+
+    test.addEventListener("click", () => {
+
+
+        const myiFrame = document.createElement("iframe");
+
+        myiFrame.setAttribute('src', "update_in/${in_result.id}/");
+
+        myDiv.appendChild(myiFrame);
+
+        
+    });
+
+</script> -->
 
 {% endblock %}

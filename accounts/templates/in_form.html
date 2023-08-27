@@ -2,11 +2,55 @@
 {% load static %}
 {% block content %}
 
-<form action="" method="POST">
+<link rel="stylesheet" type="text/css" href="{% static '/css/create_in.css' %}">
+
+<form action="" method="POST" id="myForm">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" name="Submit">
-    <a href="{% url 'user' %}">Cancel</a>
+    <input type="submit" name="Submit" id="submit">
+    <a id="cancel" href="{% url 'user' %}">Cancel</a>
 </form>
+
+<script>
+    
+    // This piece of code is POSTing data twice, find out why
+
+    // const submit = document.querySelector("input[id='submit']");
+    // const form = document.querySelector("#myForm");
+    
+    // submit.addEventListener("click", async (event) => {
+
+    
+    //     const formData = new FormData(form);
+
+    //     const response = await fetch(form.action, {
+    //         method: "POST",
+    //         body: formData,
+    //     });
+
+    //     const parentDocument = window.parent.document;
+
+    //     parentDocument.querySelector("iframe").remove();
+
+        // Reload page
+
+    // });
+
+    // const cancel = document.querySelector("a[id='cancel']");
+
+    // cancel.addEventListener("click", () => {
+
+
+    //     const parentDocument = window.parent.document;
+
+    //     parentDocument.querySelector("iframe").remove();
+        
+
+    // })
+
+
+    
+
+</script>
 
 {% endblock %}

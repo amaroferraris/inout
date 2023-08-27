@@ -1,0 +1,88 @@
+html {
+
+  border: 0.1rem solid black;
+  background-color: #13263B;
+  
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+ 
+}
+
+
+body {
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* border: 0.1rem solid black; */
+  grid-column: 2;
+  grid-row: 2;
+
+  padding: 0.5rem;
+  margin: auto;
+
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  background-color: #52A1FA;
+
+  justify-content: center;
+  text-align: center;
+
+}
+
+
+form {
+
+  display: grid;
+  grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+  grid-column: 1fr 1fr 1fr;
+  padding: 0.5rem;
+
+}
+
+
+label {
+
+  color: white;
+  /* background-color: #3D78BA; */
+  border-radius: 0.5rem;
+  padding: 0.1rem;
+  border: 0.5px solid black;
+
+}
+
+
+input {
+
+  background-color: white;
+  width: 4rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+
+  border: 1px solid white;
+
+  border-radius: 0.5rem;
+  
+}
+
+
+input#submit {
+    
+  background-color: #C7672E;
+  border-radius: 0.5rem;
+  color: black;
+  
+}
+
+
+a {
+    
+  text-decoration: none;
+  background-color: #C7672E;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  color: black;
+  border: 1px solid white;
+
+
+}

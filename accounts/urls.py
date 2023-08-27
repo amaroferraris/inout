@@ -18,5 +18,7 @@ urlpatterns = [
     
     path('', views.userPage, name="user"),
 
+    path('admin/', views.adminPage, name="admin"),
+
     # path('delete_user', views.deleteUser, name="deleteUser")
 ]
