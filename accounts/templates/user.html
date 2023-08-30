@@ -88,6 +88,13 @@
 
 </div>
 
+<form action="" method="POST" id="myForm">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" id="write" class="material-symbols-outlined" value="edit">
+    <a id="cancel" href="{% url 'user' %}">cancel</a>
+</form>
+
 
 
 <script>

@@ -220,7 +220,9 @@ def deleteOut(request, pk):
 
 # USER
 @login_required(login_url='login')
-def userPage(request):
+def userPage(request, pk):
+
+    # inOut
 
     in_results = request.user.in_set.all()
     out_results = request.user.out_set.all()
@@ -242,6 +244,29 @@ def userPage(request):
 
     total = totalIn - totalOut
 
+    # Update FORMS
 
-    context = {'in_results':in_results, 'out_results':out_results, 'total':total}
+        # IN
+
+    get_in = In.objects.get(id=pk)
+    in_form = InForm(instance=get_in)
+
+    if request.method == 'POST':
+        in_form = InForm(request.POST, instance=get_in)
+        if in_form.is_valid():
+            in_form.save()
+            return redirect('/')
+
+        # OUT
+    
+    get_out = Out.objects.get(id=pk)
+    out_form = OutForm(instance=get_out)
+
+    if request.method == 'POST':
+        out_form = OutForm(request.POST, instance=get_out)
+        if out_form.is_valid():
+            out_form.save()
+            return redirect('/')
+
+    context = {'in_results':in_results, 'out_results':out_results, 'total':total, 'in_form':in_form, 'out_form': out_form}
     return render(request, 'user.html', context)

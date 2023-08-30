@@ -16,7 +16,7 @@ urlpatterns = [
     path('update_out/<str:pk>/', views.updateOut, name="update_out"),
     path('delete_out/<str:pk>/', views.deleteOut, name="delete_out"),
     
-    path('', views.userPage, name="user"),
+    path('user/<str:pk>/', views.userPage, name="user"),
 
     path('admin/', views.adminPage, name="admin"),
 
