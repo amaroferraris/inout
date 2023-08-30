@@ -158,7 +158,7 @@ def createOut(request):
 
 # UPDATE
 @login_required(login_url='login')
-@xframe_options_exempt
+# @xframe_options_exempt
 def updateIn(request, pk):
 
     get_in = In.objects.get(id=pk)

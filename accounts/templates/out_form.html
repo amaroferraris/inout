@@ -2,11 +2,14 @@
 {% load static %}
 {% block content %}
 
-<form action="" method="POST">
+<link rel="stylesheet" type="text/css" href="{% static '/css/create_out.css' %}">
+
+
+<form id="id02" action="" method="POST">
     {% csrf_token %}
     {{form}}
-    <input type="submit" name="Submit">
-    <a href="{% url 'user' %}">Cancel</a>
+    <input type="submit" id="write" class="material-symbols-outlined" value="edit">
+    <a href="{% url 'user' %}">cancel</a>
 </form>
 
 {% endblock %}

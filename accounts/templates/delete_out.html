@@ -2,13 +2,15 @@
 {% load static %}
 {% block content %}
 
+<link rel="stylesheet" type="text/css" href="{% static '/css/delete_out.css' %}">
 
-<p>Are you sure you want to delete <strong> {{item}} {{item.category}}</strong>?</p>
+<h2>Sure?</h2>
+<p class="data">{{item}}<br>{{item.description}}<br>{{item.category}}</p>
 
 <form action="{% url 'delete_out' item.id %}" method="POST">
 
     {% csrf_token %}
-    <input type="Submit" name="Confirm">
+    <input type="submit" id="trash-can" class="material-symbols-outlined" value="delete">
     <a href="{% url 'user' %}">Cancel</a>
 </form>
 

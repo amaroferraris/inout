@@ -12,12 +12,15 @@ html {
 
 body {
 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 15rem;
 
-  /* border: 0.1rem solid black; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   grid-column: 2;
   grid-row: 2;
-
+    
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(1, 1fr);
+  
   padding: 0.5rem;
   margin: auto;
 
@@ -32,68 +35,70 @@ body {
 }
 
 
-form {
+h2 {
 
-  display: grid;
-  grid-template: repeat(4, 1fr) / repeat(2, 1fr);
-  grid-column: 1fr 1fr 1fr;
-  padding: 0.5rem;
+  color: white;
+
+}
+
+
+p {
+
 
   justify-items: center;
   align-items: center;
 
+  color:white;
+
+  padding: 0.5rem;
+
+
 }
 
 
-label {
+p.data {
 
-  color: white;
-  /* background-color: #3D78BA; */
+  color: black;
+  /* background-color: rgba(255, 255, 255, 0.5); */
   border-radius: 0.5rem;
-  padding: 0.1rem;
-  margin: 8px;
 
 }
 
 
-input {
+form {
 
-  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+
+input#trash-can {
+
+
   width: 4rem;
   padding: 0.5rem;
   margin: 0.5rem;
-
-  border: 1px solid white;
-
-  border-radius: 0.5rem;
   
-}
+  border: 1px solid white;
+  
+  border-radius: 0.5rem;
 
-input:focus {
-
-  border: 1px solid powderblue;
-  /* background-color: whitesmoke; */
-  outline: none;
-    
-}
-
-
-input#write {
-    
   background-color: #f7ba5b;
+  /* background-color: rgba(255, 80, 80, 0.85); */
+
   border: 1px solid black;
 
   cursor: pointer;
 
 }
 
-
 a {
     
   text-decoration: none;
   border-radius: 0.5rem;
-  padding: 9px;
-  margin: 9px;
+  padding: 8px;
+  margin: 8px;
   color: white;
   border: 1px solid white;
 

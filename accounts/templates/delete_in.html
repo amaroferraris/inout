@@ -2,14 +2,22 @@
 {% load static %}
 {% block content %}
 
+<link rel="stylesheet" type="text/css" href="{% static '/css/delete_in.css' %}">
 
-<p>Are you sure you want to delete <strong>{{item}} {{item.category}}</strong>?</p>
+
+<!-- <p>Delete...?</p>  -->
+<h2>Sure?</h2>
+<p class="data">{{item}}<br>{{item.description}}<br>{{item.category}}</p>
 
 <form action="{% url 'delete_in' item.id %}" method="POST">
 
     {% csrf_token %}
-    <input type="Submit" name="Confirm">
-    <a href="{% url 'user' %}">Cancel</a>
+    <!-- <div>
+        <i id="trash-can" class="material-symbols-outlined">delete</i>
+        <input type="Submit" name="Confirm" id="submit" value="confirm">
+    </div> -->
+    <input type="submit" id="trash-can" class="material-symbols-outlined" value="delete">
+    <a href="{% url 'user' %}">cancel</a>
 </form>
 
 

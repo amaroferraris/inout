@@ -1,12 +1,12 @@
 html {
 
-  height: 100%;
-  border: 0.1rem solid black;
-  background-color: #13263B;
-  
-  display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
- 
+    height: 100%;
+    border: 0.1rem solid black;
+    background-color: #4B110C;
+    
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+   
 }
 
 
@@ -24,7 +24,7 @@ body {
   border-radius: 0.5rem;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  background-color: #52A1FA;
+  background-color: rgba(255, 103, 80, 0.85);
 
   justify-content: center;
   text-align: center;
@@ -68,23 +68,20 @@ input {
   border-radius: 0.5rem;
   
 }
-
+  
 input:focus {
 
-  border: 1px solid powderblue;
-  /* background-color: whitesmoke; */
+  border: 1px solid pink;
   outline: none;
-    
+
 }
 
-
+  
 input#write {
     
   background-color: #f7ba5b;
   border: 1px solid black;
-
-  cursor: pointer;
-
+  
 }
 
 
@@ -96,5 +93,6 @@ a {
   margin: 9px;
   color: white;
   border: 1px solid white;
+
 
 }
