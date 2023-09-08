@@ -1,1 +1,11 @@
-This is inOut, an app to control your finances
+This is "inOut", an application to control your finances (in progress).
+
+This project was born from this Django course by Dennis Ivy, applied in an e-commerce.
+
+https://www.youtube.com/watch?v=_ELCMngbM0E&list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng&ab_channel=DennisIvy
+
+I took it as a starting point to build my own project to address a real problem of mine: controlling my finances. I was moving, so I had to be careful with my "inputs" and "outputs". At the same time, it served me to apply my knowledge and learn new ones.
+
+I'm currently working on adding some functionality with AJAX: mainly a modal that shows a form every time you create (or update) an entry, or that shows a "delete confirmation" in case of deleting; instead of rendering another template.
+
+Besides this, there is a lot of work to do in "inOut".  Let's do it!
