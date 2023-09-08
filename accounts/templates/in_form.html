@@ -13,8 +13,6 @@
 
 <script>
     
-    // This piece of code is POSTing data twice, find out why
-
     const submit = document.querySelector("input[id='submit']");
     const form = document.querySelector("#myForm");
 
@@ -23,28 +21,11 @@
     
         const formData = new FormData(form);
 
-
         const parentDocument = window.parent.document;
 
         parentDocument.querySelector("iframe").remove();
 
-        // Reload page
-
     });
-
-    // const cancel = document.querySelector("a[id='cancel']");
-
-    // cancel.addEventListener("click", () => {
-
-
-    //     const parentDocument = window.parent.document;
-
-    //     parentDocument.querySelector("iframe").remove();
-        
-
-    // })
-
-
     
 
 </script>

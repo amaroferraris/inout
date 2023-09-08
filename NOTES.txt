@@ -1,7 +1,15 @@
---login
----home IN | OUT | LAST n IN | LAST n OUT
-----display all
+TASKS 
 
 
-NEXT: 
-- fix the DELETE user error
+    FRONT
+
+        - Add the modal feature
+        - Limit the # of displayed entries
+        - The main page should display all entries in order of addition
+
+        
+    BACK
+
+        - Fix the DELETE-user error
+        - Start working with PostgreSQL
+        - Add filters (i.e last month, last week, x category...)

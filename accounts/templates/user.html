@@ -58,19 +58,21 @@
         <a class="out" href="{% url 'create_out' %}">OUT</a>
     </div>
             
-        {% for i in out_results reversed %}
+        {% for out_result in out_results reversed %}
         <tr>
-            <div class="amount">{{i.amount}}</div>
-            <div class="description">{{i.description}}</div>
-            <div class="category">{{i.category}}</div>
-            <div class="date">{{i.date_created|date:"d-m-y H:i"}}</div>
-            <div class="button"><a class="edit material-symbols-outlined" href="{% url 'update_out' i.id %}">EDIT</a></div>
-            <div class="button"><a class="delete material-symbols-outlined" href="{% url 'delete_out' i.id %}">DELETE</a></div>
+            <div class="amount">{{out_result.amount}}</div>
+            <div class="description">{{out_result.description}}</div>
+            <div class="category">{{out_result.category}}</div>
+            <div class="date">{{out_result.date_created|date:"d-m-y H:i"}}</div>
+            <div class="button"><a class="edit material-symbols-outlined" href="{% url 'update_out' out_result.id %}">EDIT</a></div>
+            <div class="button"><a class="delete material-symbols-outlined" href="{% url 'delete_out' out_result.id %}">DELETE</a></div>
         </tr>
         {% endfor %}
 </div>
 
-<button onclick="document.getElementById('id01').style.display='block'"></button>
+
+<button onclick="document.getElementById('id01').style.display='block'">MODAL EXAMPLE</button>
+
 
 <div id="id01" class="modal">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -85,16 +87,7 @@
             </div>
         </div>
     </form>
-
 </div>
-
-<form action="" method="POST" id="myForm">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" id="write" class="material-symbols-outlined" value="edit">
-    <a id="cancel" href="{% url 'user' %}">cancel</a>
-</form>
-
 
 
 <script>
@@ -107,30 +100,7 @@
         modal.style.display = "none";
       }
     }
-    </script>
-
-<!-- <script>
-    
-
-    // This doesn't work
-
-    const test = document.querySelector("div[id='${in_result.id}']");
-
-    const myDiv = document.querySelector("div[id='main_div']");
-
-    test.addEventListener("click", () => {
-
-
-        const myiFrame = document.createElement("iframe");
-
-        myiFrame.setAttribute('src', "update_in/${in_result.id}/");
-
-        myDiv.appendChild(myiFrame);
-
-        
-    });
-
-</script> -->
+</script>
 
 
 {% endblock %}
