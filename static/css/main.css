@@ -69,7 +69,7 @@ button:hover {opacity:1;}
   overflow: auto; /* Enable scroll if needed */
   background-color: #474E5D;
   padding-top: 50px;
-
+  
 }
 
 .modal-content {
@@ -79,6 +79,69 @@ button:hover {opacity:1;}
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 
+}
+
+
+/* ------------------------------------------------ */
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  cursor: pointer;
+  width: 100px;
+  margin: 10px;
+  color: var(--dark-grey);
+  background-color: var(--golden-yellow);
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border-color: var(--golden-yellow);
+  border-width: 3px;
+}
+
+
+.btn:hover {
+  background-image: linear-gradient(#ffcc4c, #f89808);
+}
+
+.large-btn {
+  width: 80%;
+  font-size: 1.2rem;
+  align-self: center;
+  justify-self: center;
+}
+
+.close-task-form-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+.task-form {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border-radius: 5px;
+  padding: 15px;
+  width: 300px;
+  height: 350px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+}
+
+.task-form-header {
+  display: flex;
+  justify-content: flex-end;
 }
 
 
