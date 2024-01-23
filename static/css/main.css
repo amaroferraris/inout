@@ -6,27 +6,28 @@
 
   /* PALETTE */
 
-  --color1: #1d1a39;
+  /* --color1: #1d1a39;
   --color2: #451952;
   --color3: #662549;
   --color4: #aE4454;
   --color5: #f39f5a;
-  --color6: #e8bcb9;
+  --color6: #e8bcb9; */
 
-  /* --color1: #161e2f;
+  --color1: #161e2f;
   --color2: #242f49;
   --color3: #384358;
   --color4: #ffa586;
   --color5: #b51a2b;
-  --color6: #541a2e; */
+  --color6: #541a2e;
+  --color7: #ffdc90;
 
   /* --color1: #190019;
   --color2: #2b124c;
   --color3: #522b5b;
   --color4: #854f6c;
   --color5: #dfb6b2;
-  --color6: #fbe4d8; */
-  
+  --color6: #fbe4d8;
+   */
   
 }
 
@@ -147,142 +148,105 @@ button:hover {opacity:1;}
 
 /* ------------------------------------------------ */
 
+html { 
 
-html {
-
+  /* Find out how to make this work
+  max-width: 70%; */
+  /* this works on mobile, but it doesn't on desktop */
   height: 100%;
+
+  background: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 
 
 body {
 
-  background-color: var(--color1);
+  background: linear-gradient(
+    var(--color6),
+    var(--color5),
+    var(--color4),
+    var(--color2),    
+    var(--color1)
+  );
+  
   font-family: Verdana, Tahoma, sans-serif;
-  color: var(--color3)
+  color: var(--color4);
 
-}
-
-
-h1 {
-
-  max-width: 100%;
-  
-  padding: 1rem;
-  margin: auto;
-  margin-top: 1rem;
-  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  text-align: center;
-  
-  font-family: Verdana, Tahoma, sans-serif;
-  font-size: 3rem;
-  
-  border-radius: 1em;
-  
-  color: var(--color6);
-  background-color: var(--color2);
-  
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
+  align-items: center;
+
 }
 
 
 div {
 
-  max-width: 100%; 
   display: grid; 
   cursor: default;
-
+  
 }
 
 
 .main_container {
 
   display: grid;
-  grid-template: repeat(3, 50px) / repeat(4, 1fr);
-
-}
-
-
-.inout {
-    
-  grid-column: 1 / 3;
+  grid-template: repeat(1, 50px) / repeat(4, 1fr);
 
 }
 
 
 .div_total {
     
-  grid-column: 4 / -1;
-  margin: auto; 
-  padding: auto; 
+  color: var(--color7);
+
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
-
-}
-
-
-table.total {
-    
-  border-radius: .5em; 
-  color: var(--color6);
-  background-color: var(--color3); 
-  padding:10px; 
-  margin: 10px;
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-
-th.total {
-    
-  height: 50px;
-
-}
-
-
-td.total {
-    
-  border-radius: .5em; 
-  background-color: var(--color2); 
-  justify-content: center; 
   text-align: center; 
-  padding:15px;
+  margin: auto;
 
 }
+
 
 
 .hello {
     
-  grid-row: 3; 
-  /* border: 1px solid black; */
+  grid-row: 1; 
   justify-content: center; 
   text-align: center; 
   margin: auto;
+  color: var(--color4);
     
 }
 
 
 .logout {
     
-  grid-row: 3; 
-  /* border: 1px solid black; */
+  grid-row: 1; 
   text-align: center; 
   margin: auto; 
   text-decoration: none;
+  color: var(--color4);
+
     
 }
 
 
 .admin {
     
-  grid-row: 3; 
+  grid-row: 1; 
   /* border: 1px solid black; */
   text-align: center; 
   margin: auto; 
   text-decoration: none;
+  color: var(--color4);
     
 }
 
@@ -309,10 +273,12 @@ td.total {
   padding: 5px;
   border-radius: 5px;
 
-  width: 80%;
+  /* width: 100%; */
   margin: auto;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  color: var(--color7);
 
 }
 
@@ -330,7 +296,6 @@ td.total {
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
   width: 100%;
-  /* border: 1px solid black; */
   border-radius: 5px;
   text-decoration: none;
   color: white;
@@ -342,15 +307,14 @@ td.total {
 .in {
     
   background-color: var(--color2);
-  color: var(--color6)
+  color: var(--color7)
 
 }
-
 
 .title .in {
     
   background-color: var(--color3); 
-  color: var(--color6);
+  color: var(--color7);
 
 }
 
@@ -360,14 +324,23 @@ td.total {
 .title .out {
   
   background-color: var(--color3); 
-  color: var(--color6);
+  color: var(--color7);
   
 }
 
 .out {
   
   background-color: var(--color2);
-  color: var(--color6);
+  color: var(--color7);
+
+  margin-top: 0.7rem;
+
+}
+
+.in-out-button {
+  
+  background-color: var(--color3);
+  color: var(--color7) !important;
 
 }
 
@@ -379,9 +352,36 @@ td.total {
 } */
 
 
+.amount {
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+}
+
+.description {
+
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.category {
+  
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
 .date {
     
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   display: flex; /* Use flexbox for vertical alignment */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
@@ -399,7 +399,7 @@ td.total {
 
 .button a {
     
-  width: 85%;
+  width: 65%;
   margin: auto;
 
   color: rgba(0, 0, 0, 0.80); 

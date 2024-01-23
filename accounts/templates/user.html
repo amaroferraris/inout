@@ -6,17 +6,10 @@
 
 <div class="main_container">
 
-    <div class="inout"><h1>inOut</h1></div>
+    <!-- <div class="inout"><h1>inOut</h1></div> -->
 
     <div class="div_total">
-        <table class="total">
-            <tr>
-                <th class="total">TOTAL</th>
-            </tr>
-            <tr>
-                <td class="total">{{total}}</td>
-            </tr>
-        </table>
+                TOTAL {{total}}
     </div>
     
     <div class="hello">
@@ -32,10 +25,10 @@
 
 
 
-<div class="container in" id="main_div">
+<div class="container in">
         
     <div class="title">
-        <a class="in" href="{% url 'create_in' %}">IN</a>
+        <a class="in-out-button" href="{% url 'create_in' %}">IN</a>
     </div>
             
         {% for in_result in in_results reversed %}
@@ -51,11 +44,10 @@
         {% endfor %}
 </div>
 
-
 <div class="container out">
         
     <div class="title">
-        <a class="out" href="{% url 'create_out' %}">OUT</a>
+        <a class="in-out-button" href="{% url 'create_out' %}">OUT</a>
     </div>
             
         {% for out_result in out_results reversed %}
@@ -89,13 +81,13 @@
     </form>
 </div> -->
 
-<button id="open-task-form-btn" class="btn large-btn">
+<!-- <button id="open-task-form-btn" class="btn large-btn">
     IN
     <form class="task-form hidden" id="task-form">
         <div class="task-form-header">
           <button id="close-task-form-btn" class="close-task-form-btn" type="button" aria-label="close">
             <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)" /><path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)" /></svg>
-</button>
+</button> -->
 
 
 <script>
