@@ -19,15 +19,15 @@
   --color4: #ffa586;
   --color5: #b51a2b;
   --color6: #541a2e;
-  --color7: rgb(255, 220, 144);
+  --color7: #ffdc90;
 
   /* --color1: #190019;
   --color2: #2b124c;
   --color3: #522b5b;
   --color4: #854f6c;
   --color5: #dfb6b2;
-  --color6: #fbe4d8; */
-  
+  --color6: #fbe4d8;
+   */
   
 }
 
@@ -148,12 +148,20 @@ button:hover {opacity:1;}
 
 /* ------------------------------------------------ */
 
-/* html { */
+html { 
+
   /* Find out how to make this work
   max-width: 70%; */
-  /* this works on mobile, but it doesn't on desktop 
-  height: 100%;  */
-/* } */
+  /* this works on mobile, but it doesn't on desktop */
+  height: 100%;
+
+  background: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 
 body {
@@ -169,32 +177,12 @@ body {
   font-family: Verdana, Tahoma, sans-serif;
   color: var(--color4);
 
-  max-width: 80%;
-  
-}
-
-
-h1 {
-
-  max-width: 100%;
-  
-  padding: 1rem;
-  margin: auto;
-  margin-top: 1rem;
-  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  text-align: center;
-  
-  font-family: Verdana, Tahoma, sans-serif;
-  font-size: 3rem;
-  
-  border-radius: 1em;
-  
-  color: var(--color4);
-  background-color: var(--color2);
-  
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
+  align-items: center;
+
 }
 
 
@@ -216,11 +204,13 @@ div {
 
 .div_total {
     
+  color: var(--color7);
+
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
   text-align: center; 
-  margin: auto; 
+  margin: auto;
 
 }
 
@@ -341,7 +331,9 @@ div {
 .out {
   
   background-color: var(--color2);
-  color: var(--color7)
+  color: var(--color7);
+
+  margin-top: 0.7rem;
 
 }
 
@@ -370,18 +362,18 @@ div {
 
 .description {
 
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   
 }
 
 .category {
   
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 
 }
@@ -389,7 +381,7 @@ div {
 
 .date {
     
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   display: flex; /* Use flexbox for vertical alignment */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */

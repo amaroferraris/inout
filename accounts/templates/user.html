@@ -33,7 +33,7 @@
             
         {% for in_result in in_results reversed %}
         <tr>
-            <div class="amount">+{{in_result.amount}}</div>
+            <div class="amount">{{in_result.amount}}</div>
             <div class="description">{{in_result.description}}</div>
             <div class="category">{{in_result.category}}</div>
             <div class="date">{{in_result.date_created|date:"d/m/y H:i"}}</div>
@@ -44,8 +44,6 @@
         {% endfor %}
 </div>
 
-<hr>
-
 <div class="container out">
         
     <div class="title">
@@ -54,7 +52,7 @@
             
         {% for out_result in out_results reversed %}
         <tr>
-            <div class="amount">-{{out_result.amount}}</div>
+            <div class="amount">{{out_result.amount}}</div>
             <div class="description">{{out_result.description}}</div>
             <div class="category">{{out_result.category}}</div>
             <div class="date">{{out_result.date_created|date:"d-m-y H:i"}}</div>
