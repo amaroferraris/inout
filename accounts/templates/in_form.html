@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static '/css/create_in.css' %}">
 
-<form action="" method="POST" id="myForm">
+<form action="" method="POST" id="myForm" class="in-form">
     {% csrf_token %}
     {{ form }}
     <input type="submit" id="write" class="material-symbols-outlined" value="edit">

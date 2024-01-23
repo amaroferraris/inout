@@ -1,11 +1,12 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 from django.contrib.auth.models import User
 
 # Create your models here.
 
 class In(models.Model):
     user_in = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    amount = models.IntegerField(null=True)
+    amount = models.IntegerField(null=True, validators=[MinValueValidator(0)])
     description = models.CharField(max_length=9, null=True)
     category = models.CharField(max_length=6, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
@@ -16,7 +17,7 @@ class In(models.Model):
 
 class Out(models.Model):
     user_out = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    amount = models.IntegerField(null=True)
+    amount = models.IntegerField(null=True, validators=[MinValueValidator(0)])
     description = models.CharField(max_length=9, null=True)
     category = models.CharField(max_length=6, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
